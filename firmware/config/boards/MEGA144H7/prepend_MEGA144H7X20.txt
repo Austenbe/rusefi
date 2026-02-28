@@ -1,0 +1,37 @@
+#define ts_show_etb_pins true
+#define ts_show_tcu true
+#define ts_show_software_knock true
+#define ts_show_injectionPinMode true
+#define ts_show_output_diag true
+#define ts_show_gdi true
+#define ts_show_k_line true
+#define show_tcu_gauges true
+#define MAX_TPS_PPS_DISCREPANCY 15
+
+! board has zero LEDs
+#define ts_show_status_leds false
+
+#define VE_RPM_COUNT 20
+#define VE_LOAD_COUNT 20
+#define FUEL_RPM_COUNT 20
+#define FUEL_LOAD_COUNT 20
+#define IGN_LOAD_COUNT 20
+#define IGN_RPM_COUNT 20
+#define ETB_HW_MAX_FREQUENCY 25000
+
+#define DBL_BLEND_TABLE_COUNT 32
+#define THERMISTOR_CAL_SIZE 128
+
+! huge buffer for happier remote TCP/IP connector
+#define CUSTOM_TS_BUFFER_SIZE 32000
+#define TS_BLOCK_READ_TIMEOUT 300
+#define ts_show_tps_sent true
+
+#define PROGPORTS 144
+
+#define FRONTEND_TITLE_BAR_NAME "M1EGA144H7"
+
+! big memory ECU gets scripting stuff back
+#define ts_show_lua_script_settings	true
+#define ts_show_lua_table_settings true
+#define ts_show_lua_curve_settings true

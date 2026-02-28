@@ -371,7 +371,7 @@ public class PinoutLogic {
             }
 
             outputs.write(pinNamesForHwQC.toString());
-            outputs.write("}\n");
+            outputs.write("};\n");
 
         }
 

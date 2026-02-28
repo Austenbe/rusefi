@@ -1,0 +1,708 @@
+meta: config/boards/M144H7BLACK/M144_meta.h
+
+pins:
+- class: [outputs, switch_inputs]
+  id: [ M144_D0, M144_D0 ]
+  pin: 0
+  ts_name: D0
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D1, M144_D1 ]
+  pin: 1
+  ts_name: D1
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D2, M144_D2 ]
+  pin: 2
+  ts_name: D2
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D3, M144_D3 ]
+  pin: 3
+  ts_name: D3
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D4, M144_D4 ]
+  pin: 4
+  ts_name: D4
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D5, M144_D5 ]
+  pin: 5
+  ts_name: D5
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D6, M144_D6 ]
+  pin: 6
+  ts_name: D6
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D7, M144_D7 ]
+  pin: 7
+  ts_name: D7
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D8, M144_D8 ]
+  pin: 8
+  ts_name: D8
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D9, M144_D9 ]
+  pin: 9
+  ts_name: D9
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D10, M144_D10 ]
+  pin: 10
+  ts_name: D10
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D11, M144_D11 ]
+  pin: 11
+  ts_name: D11
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D12, M144_D12 ]
+  pin: 12
+  ts_name: D12
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D13, M144_D13 ]
+  pin: 13
+  ts_name: D13
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D14, M144_D14 ]
+  pin: 14
+  ts_name: D14
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D15, M144_D15 ]
+  pin: 15
+  ts_name: D15
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D16, M144_D16 ]
+  pin: 16
+  ts_name: D16
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D17, M144_D17 ]
+  pin: 17
+  ts_name: D17
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D18, M144_D18 ]
+  pin: 18
+  ts_name: D18
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D19, M144_D19 ]
+  pin: 19
+  ts_name: D19
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D20, M144_D20 ]
+  pin: 20
+  ts_name: D20
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D21, M144_D21 ]
+  pin: 21
+  ts_name: D21
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D22, M144_D22 ]
+  pin: 22
+  ts_name: D22
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D23, M144_D23 ]
+  pin: 23
+  ts_name: D23
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D24, M144_D24 ]
+  pin: 24
+  ts_name: D24
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D25, M144_D25 ]
+  pin: 25
+  ts_name: D25
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D26, M144_D26 ]
+  pin: 26
+  ts_name: D26
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D27, M144_D27 ]
+  pin: 27
+  ts_name: D27
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D28, M144_D28 ]
+  pin: 28
+  ts_name: D28
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D29, M144_D29 ]
+  pin: 29
+  ts_name: D29
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D30, M144_D30 ]
+  pin: 30
+  ts_name: D30
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D31, M144_D31 ]
+  pin: 31
+  ts_name: D31
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D32, M144_D32 ]
+  pin: 32
+  ts_name: D32
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D33, M144_D33 ]
+  pin: 33
+  ts_name: D33
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D34, M144_D34 ]
+  pin: 34
+  ts_name: D34
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D35, M144_D35 ]
+  pin: 35
+  ts_name: D35
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D36, M144_D36 ]
+  pin: 36
+  ts_name: D36
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D37, M144_D37 ]
+  pin: 37
+  ts_name: D37
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D38, M144_D38 ]
+  pin: 38
+  ts_name: D38
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D39, M144_D39 ]
+  pin: 39
+  ts_name: D39
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D40, M144_D40 ]
+  pin: 40
+  ts_name: D40
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D41, M144_D41 ]
+  pin: 41
+  ts_name: D41
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D42, M144_D42 ]
+  pin: 42
+  ts_name: D42
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D43, M144_D43 ]
+  pin: 43
+  ts_name: D43
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D44, M144_D44 ]
+  pin: 44
+  ts_name: D44
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D45, M144_D45 ]
+  pin: 45
+  ts_name: D45
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D46, M144_D46 ]
+  pin: 46
+  ts_name: D46
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D47, M144_D47 ]
+  pin: 47
+  ts_name: D47
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D48, M144_D48 ]
+  pin: 48
+  ts_name: D48
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D49, M144_D49 ]
+  pin: 49
+  ts_name: D49
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D50, M144_D50 ]
+  pin: 50
+  ts_name: D50
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D51, M144_D51 ]
+  pin: 51
+  ts_name: D51
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D52, M144_D52 ]
+  pin: 52
+  ts_name: D52
+  type: ls
+- class: [outputs, switch_inputs]
+  id: [ M144_D53, M144_D53 ]
+  pin: 53
+  ts_name: D53
+  type: ls
+- class: analog_inputs
+  meta: M144_A0
+  pin: 54
+  ts_name: A0
+  type: av
+- class: analog_inputs
+  meta: M144_A1
+  pin: 55
+  ts_name: A1
+  type: av
+- class: analog_inputs
+  meta: M144_A2
+  pin: 56
+  ts_name: A2
+  type: av
+- class: analog_inputs
+  meta: M144_A3
+  pin: 57
+  ts_name: A3
+  type: av
+- class: analog_inputs
+  meta: M144_A4
+  pin: 58
+  ts_name: A4
+  type: av
+- class: analog_inputs
+  meta: M144_A5
+  pin: 59
+  ts_name: A5
+  type: av
+- class: analog_inputs
+  meta: M144_A6
+  pin: 60
+  ts_name: A6
+  type: av
+- class: analog_inputs
+  meta: M144_A7
+  pin: 61
+  ts_name: A7
+  type: av
+- class: analog_inputs
+  meta: M144_A8
+  pin: 62
+  ts_name: A8
+  type: av
+- class: analog_inputs
+  meta: M144_A9
+  pin: 63
+  ts_name: A9
+  type: av
+- class: analog_inputs
+  meta: M144_A10
+  pin: 64
+  ts_name: A10
+  type: av
+- class: analog_inputs
+  meta: M144_A11
+  pin: 65
+  ts_name: A11
+  type: av
+- class: analog_inputs
+  meta: M144_A12
+  pin: 66
+  ts_name: A12
+  type: av
+- class: analog_inputs
+  meta: M144_A13
+  pin: 67
+  ts_name: A13
+  type: av
+- class: analog_inputs
+  meta: M144_A14
+  pin: 68
+  ts_name: A14
+  type: av
+- class: analog_inputs
+  meta: M144_A15
+  pin: 69
+  ts_name: A15
+  type: av
+
+
+
+- class: [switch_inputs, outputs]
+  id: [ A11, A11 ]
+  ts_name: PA11
+- class: [switch_inputs, outputs]
+  id: [ A12, A12 ]
+  ts_name: PA12
+- class: [switch_inputs, outputs]
+  id: [ A13, A13 ]
+  ts_name: PA13
+- class: [switch_inputs, outputs]
+  id: [ A14, A14 ]
+  ts_name: PA14
+- class: [switch_inputs, outputs]
+  id: [ B0, B0 ]
+  ts_name: PB0
+- class: [switch_inputs, outputs]
+  id: [ B1, B1 ]
+  ts_name: PB1
+
+
+- class: [switch_inputs, outputs]
+  id: [ C0, C0 ]
+  ts_name: PC0
+- class: [switch_inputs, outputs]
+  id: [ C1, C1 ]
+  ts_name: PC1
+- class: [switch_inputs, outputs]
+  id: [ C2, C2 ]
+  ts_name: PC2
+- class: [switch_inputs, outputs]
+  id: [ C3, C3 ]
+  ts_name: PC3
+- class: [switch_inputs, outputs]
+  id: [ C4, C4 ]
+  ts_name: PC4
+- class: [switch_inputs, outputs]
+  id: [ C5, C5 ]
+  ts_name: PC5
+
+
+- class: [switch_inputs, outputs]
+  id: [ C10, C10 ]
+  ts_name: PC10
+- class: [switch_inputs, outputs]
+  id: [ C11, C11 ]
+  ts_name: PC11
+- class: [switch_inputs, outputs]
+  id: [ C12, C12 ]
+  ts_name: PC12
+
+
+- class: [switch_inputs, outputs]
+  id: [ C14, C14 ]
+  ts_name: PC14
+- class: [switch_inputs, outputs]
+  id: [ C15, C15 ]
+  ts_name: PC15
+- class: [switch_inputs, outputs]
+  id: [ D0, D0 ]
+  ts_name: PD0
+- class: [switch_inputs, outputs]
+  id: [ D1, D1 ]
+  ts_name: PD1
+- class: [switch_inputs, outputs]
+  id: [ D2, D2 ]
+  ts_name: PD2
+
+
+
+- class: [switch_inputs, outputs]
+  id: [ F0, F0 ]
+  ts_name: PF0
+- class: [switch_inputs, outputs]
+  id: [ F1, F1 ]
+  ts_name: PF1
+- class: [switch_inputs, outputs]
+  id: [ F2, F2 ]
+  ts_name: PF2
+- class: [switch_inputs, outputs]
+  id: [ F3, F3 ]
+  ts_name: PF3
+- class: [switch_inputs, outputs]
+  id: [ F4, F4 ]
+  ts_name: PF4
+- class: [switch_inputs, outputs]
+  id: [ F5, F5 ]
+  ts_name: PF5
+- class: [switch_inputs, outputs]
+  id: [ F6, F6 ]
+  ts_name: PF6
+- class: [switch_inputs, outputs]
+  id: [ F7, F7 ]
+  ts_name: PF7
+- class: [switch_inputs, outputs]
+  id: [ F8, F8 ]
+  ts_name: PF8
+- class: [switch_inputs, outputs]
+  id: [ F9, F9 ]
+  ts_name: PF9
+- class: [switch_inputs, outputs]
+  id: [ F10, F10 ]
+  ts_name: PF10
+- class: [switch_inputs, outputs]
+  id: [ F11, F11 ]
+  ts_name: PF11
+- class: [switch_inputs, outputs]
+  id: [ F12, F12 ]
+  ts_name: PF12
+- class: [switch_inputs, outputs]
+  id: [ F13, F13 ]
+  ts_name: PF13
+- class: [switch_inputs, outputs]
+  id: [ F14, F14 ]
+  ts_name: PF14
+- class: [switch_inputs, outputs]
+  id: [ F15, F15 ]
+  ts_name: PF15
+- class: [switch_inputs, outputs]
+  id: [ G0, G0 ]
+  ts_name: PG0
+- class: [switch_inputs, outputs]
+  id: [ G1, G1 ]
+  ts_name: PG1
+- class: [switch_inputs, outputs]
+  id: [ G2, G2 ]
+  ts_name: PG2
+- class: [switch_inputs, outputs]
+  id: [ G3, G3 ]
+  ts_name: PG3
+- class: [switch_inputs, outputs]
+  id: [ G4, G4 ]
+  ts_name: PG4
+- class: [switch_inputs, outputs]
+  id: [ G5, G5 ]
+  ts_name: PG5
+- class: [switch_inputs, outputs]
+  id: [ G6, G6 ]
+  ts_name: PG6
+- class: [switch_inputs, outputs]
+  id: [ G7, G7 ]
+  ts_name: PG7
+- class: [switch_inputs, outputs]
+  id: [ G8, G8 ]
+  ts_name: PG8
+- class: [switch_inputs, outputs]
+  id: [ G9, G9 ]
+  ts_name: PG9
+- class: [switch_inputs, outputs]
+  id: [ G10, G10 ]
+  ts_name: PG10
+- class: [switch_inputs, outputs]
+  id: [ G11, G11 ]
+  ts_name: PG11
+- class: [switch_inputs, outputs]
+  id: [ G12, G12 ]
+  ts_name: PG12
+- class: [switch_inputs, outputs]
+  id: [ G13, G13 ]
+  ts_name: PG13
+
+- class: [switch_inputs, outputs]
+  id: [ H0, H0 ]
+  ts_name: PH0
+- class: [switch_inputs, outputs]
+  id: [ H1, H1 ]
+  ts_name: PH1
+- class: [switch_inputs, outputs]
+  id: [ H2, H2 ]
+  ts_name: PH2
+- class: [switch_inputs, outputs]
+  id: [ H3, H3 ]
+  ts_name: PH3
+- class: [switch_inputs, outputs]
+  id: [ H4, H4 ]
+  ts_name: PH4
+- class: [switch_inputs, outputs]
+  id: [ H5, H5 ]
+  ts_name: PH5
+- class: [switch_inputs, outputs]
+  id: [ H6, H6 ]
+  ts_name: PH6
+- class: [switch_inputs, outputs]
+  id: [ H7, H7 ]
+  ts_name: PH7
+- class: [switch_inputs, outputs]
+  id: [ H8, H8 ]
+  ts_name: PH8
+- class: [switch_inputs, outputs]
+  id: [ H9, H9 ]
+  ts_name: PH9
+- class: [switch_inputs, outputs]
+  id: [ H10, H10 ]
+  ts_name: PH10
+- class: [switch_inputs, outputs]
+  id: [ H11, H11 ]
+  ts_name: PH11
+- class: [switch_inputs, outputs]
+  id: [ H12, H12 ]
+  ts_name: PH12
+- class: [switch_inputs, outputs]
+  id: [ H13, H13 ]
+  ts_name: PH13
+- class: [switch_inputs, outputs]
+  id: [ H14, H14 ]
+  ts_name: PH14
+- class: [switch_inputs, outputs]
+  id: [ H15, H15 ]
+  ts_name: PH15
+- class: [switch_inputs, outputs]
+  id: [ I0, I0 ]
+  ts_name: PI0
+- class: [switch_inputs, outputs]
+  id: [ I1, I1 ]
+  ts_name: PI1
+- class: [switch_inputs, outputs]
+  id: [ I2, I2 ]
+  ts_name: PI2
+- class: [switch_inputs, outputs]
+  id: [ I3, I3 ]
+  ts_name: PI3
+- class: [switch_inputs, outputs]
+  id: [ I4, I4 ]
+  ts_name: PI4
+- class: [switch_inputs, outputs]
+  id: [ I5, I5 ]
+  ts_name: PI5
+- class: [switch_inputs, outputs]
+  id: [ I6, I6 ]
+  ts_name: PI6
+- class: [switch_inputs, outputs]
+  id: [ I7, I7 ]
+  ts_name: PI7
+- class: [switch_inputs, outputs]
+  id: [ I8, I8 ]
+  ts_name: PI8
+- class: [switch_inputs, outputs]
+  id: [ I9, I9 ]
+  ts_name: PI9
+- class: [switch_inputs, outputs]
+  id: [ I10, I10 ]
+  ts_name: PI10
+- class: [switch_inputs, outputs]
+  id: [ I11, I11 ]
+  ts_name: PI11
+- class: [switch_inputs, outputs]
+  id: [ I12, I12 ]
+  ts_name: PI12
+- class: [switch_inputs, outputs]
+  id: [ I13, I13 ]
+  ts_name: PI13
+- class: [switch_inputs, outputs]
+  id: [ I14, I14 ]
+  ts_name: PI14
+- class: [switch_inputs, outputs]
+  id: [ I15, I15 ]
+  ts_name: PI15
+- class: [switch_inputs, outputs]
+  id: [ J0, J0 ]
+  ts_name: PJ0
+- class: [switch_inputs, outputs]
+  id: [ J1, J1 ]
+  ts_name: PJ1
+- class: [switch_inputs, outputs]
+  id: [ J2, J2 ]
+  ts_name: PJ2
+- class: [switch_inputs, outputs]
+  id: [ J3, J3 ]
+  ts_name: PJ3
+- class: [switch_inputs, outputs]
+  id: [ J4, J4 ]
+  ts_name: PJ4
+- class: [switch_inputs, outputs]
+  id: [ J5, J5 ]
+  ts_name: PJ5
+- class: [switch_inputs, outputs]
+  id: [ J6, J6 ]
+  ts_name: PJ6
+- class: [switch_inputs, outputs]
+  id: [ J7, J7 ]
+  ts_name: PJ7
+- class: [switch_inputs, outputs]
+  id: [ J8, J8 ]
+  ts_name: PJ8
+- class: [switch_inputs, outputs]
+  id: [ J9, J9 ]
+  ts_name: PJ9
+- class: [switch_inputs, outputs]
+  id: [ J10, J10 ]
+  ts_name: PJ10
+- class: [switch_inputs, outputs]
+  id: [ J11, J11 ]
+  ts_name: PJ11
+- class: [switch_inputs, outputs]
+  id: [ J12, J12 ]
+  ts_name: PJ12
+- class: [switch_inputs, outputs]
+  id: [ J13, J13 ]
+  ts_name: PJ13
+- class: [switch_inputs, outputs]
+  id: [ J14, J14 ]
+  ts_name: PJ14
+- class: [switch_inputs, outputs]
+  id: [ J15, J15 ]
+  ts_name: PJ15
+- class: [switch_inputs, outputs]
+  id: [ K0, K0 ]
+  ts_name: PK0
+- class: [switch_inputs, outputs]
+  id: [ K1, K1 ]
+  ts_name: PK1
+- class: [switch_inputs, outputs]
+  id: [ K2, K2 ]
+  ts_name: PK2
+- class: [switch_inputs, outputs]
+  id: [ K3, K3 ]
+  ts_name: PK3
+- class: [switch_inputs, outputs]
+  id: [ K4, K4 ]
+  ts_name: PK4
+- class: [switch_inputs, outputs]
+  id: [ K5, K5 ]
+  ts_name: PK5
+- class: [switch_inputs, outputs]
+  id: [ K6, K6 ]
+  ts_name: PK6
+- class: [switch_inputs, outputs]
+  id: [ K7, K7 ]
+  ts_name: PK7
+- class: [switch_inputs, outputs]
+  id: [ K8, K8 ]
+  ts_name: PK8
+- class: [switch_inputs, outputs]
+  id: [ K9, K9 ]
+  ts_name: PK9
+- class: [switch_inputs, outputs]
+  id: [ K10, K10 ]
+  ts_name: PK10
+- class: [switch_inputs, outputs]
+  id: [ K11, K11 ]
+  ts_name: PK11
+- class: [switch_inputs, outputs]
+  id: [ K12, K12 ]
+  ts_name: PK12
+- class: [switch_inputs, outputs]
+  id: [ K13, K13 ]
+  ts_name: PK13
+- class: [switch_inputs, outputs]
+  id: [ K14, K14 ]
+  ts_name: PK14
+- class: [switch_inputs, outputs]
+  id: [ K15, K15 ]
+  ts_name: PK15

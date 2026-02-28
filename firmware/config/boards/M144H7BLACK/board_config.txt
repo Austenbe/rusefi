@@ -1,0 +1,6 @@
+! this file is used to define custom board-specific calibrations
+! see also extra.txt for board-specific data points
+
+include_file controllers/tcu/tcu_config.txt
+
+include_file controllers/lua/lua_script_config.txt
