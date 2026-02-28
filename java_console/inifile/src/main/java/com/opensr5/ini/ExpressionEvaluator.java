@@ -1,12 +1,18 @@
 package com.opensr5.ini;
 
 import com.devexperts.logging.Logging;
+import com.opensr5.ConfigurationImage;
+import com.opensr5.ini.field.IniField;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +30,8 @@ import java.util.regex.Pattern;
  * <p>
  * Does NOT support:
  * - Function calls (e.g., stringValue(), bitStringValue())
+ * TODO:
+ * we should considering moving this to a factory-thing, since we are passing and evaluating too many times the same ini file/configuration image
  */
 public class ExpressionEvaluator {
     private static final Logging log = Logging.getLogging(ExpressionEvaluator.class);
@@ -60,7 +68,7 @@ public class ExpressionEvaluator {
         }
 
         // Remove braces if present
-        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*\\}$", "").trim();
+        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*}$", "").trim();
 
         // Check if it contains variable names or custom function calls - these can't be evaluated without context
         if (containsVariableOrFunction(cleaned)) {
@@ -131,7 +139,7 @@ public class ExpressionEvaluator {
         }
 
         // Remove braces if present
-        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*\\}$", "").trim();
+        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*}$", "").trim();
 
         // For string function calls, extract variables from the expression argument
         if (containsUnsupportedConstruct(cleaned)) {
@@ -198,7 +206,7 @@ public class ExpressionEvaluator {
         if (expression == null) {
             return false;
         }
-        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*\\}$", "").trim();
+        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*}$", "").trim();
         return cleaned.contains("?") && cleaned.contains(":");
     }
 
@@ -216,7 +224,7 @@ public class ExpressionEvaluator {
         }
 
         // Remove braces if present
-        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*\\}$", "").trim();
+        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*}$", "").trim();
 
         // Find the ? operator
         int questionMark = findOperatorOutsideParens(cleaned, '?');
@@ -345,6 +353,213 @@ public class ExpressionEvaluator {
         }
 
         return null;
+    }
+
+    /**
+     * Convenience overload: resolves variable values from an INI model and config image, then evaluates.
+     *
+     * @param expression the expression to evaluate
+     * @param ini the INI file model used to look up field offsets
+     * @param ci the configuration image to read field values from
+     * @return true/false based on the expression, or null if it cannot be evaluated
+     */
+    @Nullable
+    public static Boolean evaluateBooleanExpression(String expression, IniFileModel ini, ConfigurationImage ci) {
+        Set<String> varNames = extractVariables(expression);
+        Map<String, Double> context = new HashMap<>();
+        for (String varName : varNames) {
+            Optional<IniField> field = ini.findIniField(varName);
+            if (field.isPresent()) {
+                Double value = ci.readNumericValue(field.get());
+                if (value != null) context.put(varName, value);
+            }
+        }
+        return evaluateBooleanExpression(expression, context);
+    }
+
+    /**
+     * Evaluate a boolean expression like those used in TunerStudio INI files for field visibility/enabled.
+     * Supports: ==, !=, >=, <=, >, <, &&, ||, !, parentheses, and bare variables (truthy if non-zero).
+     *
+     * @param expression the expression to evaluate (e.g., "{trigger_type == 0}" or "{field1 > 50 && field2 < 100}")
+     * @param variables a map of variable names to their values
+     * @return true/false based on the expression, or null if the expression cannot be evaluated
+     */
+    @Nullable
+    public static Boolean evaluateBooleanExpression(String expression, Map<String, Double> variables) {
+        if (expression == null || expression.trim().isEmpty()) {
+            return null;
+        }
+
+        // Remove braces if present
+        String cleaned = expression.trim().replaceAll("^\\{\\s*", "").replaceAll("\\s*}$", "").trim();
+
+        if (cleaned.isEmpty()) {
+            return null;
+        }
+
+        try {
+            return parseOrExpr(cleaned, variables);
+        } catch (Exception e) {
+            log.debug("Failed to evaluate boolean expression: " + expression + " - " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Parse an OR expression: terms separated by || outside parentheses.
+     */
+    @Nullable
+    private static Boolean parseOrExpr(String expr, Map<String, Double> variables) {
+        List<String> parts = splitOutsideParens(expr, "||");
+        if (parts.size() > 1) {
+            for (String part : parts) {
+                Boolean result = parseAndExpr(part.trim(), variables);
+                if (result == null) return null;
+                if (result) return true;
+            }
+            return false;
+        }
+        return parseAndExpr(expr, variables);
+    }
+
+    /**
+     * Parse an AND expression: terms separated by && outside parentheses.
+     */
+    @Nullable
+    private static Boolean parseAndExpr(String expr, Map<String, Double> variables) {
+        List<String> parts = splitOutsideParens(expr, "&&");
+        if (parts.size() > 1) {
+            for (String part : parts) {
+                Boolean result = parseComparison(part.trim(), variables);
+                if (result == null) return null;
+                if (!result) return false;
+            }
+            return true;
+        }
+        return parseComparison(expr, variables);
+    }
+
+    /**
+     * Parse a comparison expression: two sides separated by ==, !=, >=, <=, >, < outside parentheses.
+     */
+    @Nullable
+    private static Boolean parseComparison(String expr, Map<String, Double> variables) {
+        // Try each comparison operator (check 2-char operators first)
+        String[] ops = {"==", "!=", ">=", "<=", ">", "<"};
+        for (String op : ops) {
+            int idx = findMultiCharOperatorOutsideParens(expr, op);
+            if (idx >= 0) {
+                String left = expr.substring(0, idx).trim();
+                String right = expr.substring(idx + op.length()).trim();
+                Double leftVal = evaluateSimpleExpression(left, variables);
+                Double rightVal = evaluateSimpleExpression(right, variables);
+                if (leftVal == null || rightVal == null) return null;
+                switch (op) {
+                    case "==": return Math.abs(leftVal - rightVal) < 1e-9;
+                    case "!=": return Math.abs(leftVal - rightVal) >= 1e-9;
+                    case ">=": return leftVal >= rightVal;
+                    case "<=": return leftVal <= rightVal;
+                    case ">": return leftVal > rightVal;
+                    case "<": return leftVal < rightVal;
+                }
+            }
+        }
+        return parseAtom(expr, variables);
+    }
+
+    /**
+     * Parse an atomic boolean expression: negation, parenthesized sub-expression, or bare variable/expression (truthy if non-zero).
+     */
+    @Nullable
+    private static Boolean parseAtom(String expr, Map<String, Double> variables) {
+        expr = expr.trim();
+        if (expr.isEmpty()) return null;
+
+        // Handle negation
+        if (expr.startsWith("!")) {
+            Boolean inner = parseAtom(expr.substring(1).trim(), variables);
+            return inner == null ? null : !inner;
+        }
+
+        // Handle parenthesized sub-expression
+        if (expr.startsWith("(") && findMatchingParen(expr) == expr.length() - 1) {
+            return parseOrExpr(expr.substring(1, expr.length() - 1).trim(), variables);
+        }
+
+        // Bare variable or arithmetic expression — truthy if non-zero
+        Double val = evaluateSimpleExpression(expr, variables);
+        if (val == null) return null;
+        return val != 0.0;
+    }
+
+    /**
+     * Split a string by a delimiter, but only when the delimiter is outside parentheses.
+     */
+    private static List<String> splitOutsideParens(String s, String delimiter) {
+        List<String> parts = new ArrayList<>();
+        int depth = 0;
+        int start = 0;
+        for (int i = 0; i <= s.length() - delimiter.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                depth++;
+            } else if (c == ')') {
+                depth--;
+            } else if (depth == 0 && s.startsWith(delimiter, i)) {
+                parts.add(s.substring(start, i));
+                start = i + delimiter.length();
+                i += delimiter.length() - 1; // skip past delimiter
+            }
+        }
+        parts.add(s.substring(start));
+        return parts;
+    }
+
+    /**
+     * Find a multi-character operator (like ==, !=, >=, <=) outside parentheses.
+     * For single-char operators (>, <), avoids matching as part of multi-char operators.
+     *
+     * @return the index of the operator, or -1 if not found
+     */
+    private static int findMultiCharOperatorOutsideParens(String s, String op) {
+        int depth = 0;
+        for (int i = 0; i <= s.length() - op.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                depth++;
+            } else if (c == ')') {
+                depth--;
+            } else if (depth == 0 && s.startsWith(op, i)) {
+                // For single-char operators, make sure we're not part of a 2-char operator
+                if (op.length() == 1) {
+                    // Check if this is part of ==, !=, >=, <=
+                    if (i > 0 && (s.charAt(i - 1) == '!' || s.charAt(i - 1) == '>' || s.charAt(i - 1) == '<')) {
+                        continue;
+                    }
+                    if (i + 1 < s.length() && s.charAt(i + 1) == '=') {
+                        continue;
+                    }
+                }
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Find the matching closing parenthesis for an opening one.
+     */
+    private static int findMatchingParen(String s) {
+        int depth = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') depth++;
+            else if (s.charAt(i) == ')') {
+                depth--;
+                if (depth == 0) return i;
+            }
+        }
+        return -1;
     }
 
     /**
