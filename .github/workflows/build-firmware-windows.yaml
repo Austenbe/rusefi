@@ -52,7 +52,7 @@ jobs:
         run: arm-none-eabi-gcc -v
 
       - name: Print make version
-        run: make -v
+        run: bin/compile.sh config/boards/MEGA144H7/meta-info-MEGA144H7.env bundle --output-sync=recurse
 
       - name: Compile Firmware
         working-directory: firmware
