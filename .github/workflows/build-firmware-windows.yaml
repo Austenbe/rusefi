@@ -56,4 +56,4 @@ jobs:
 
       - name: Compile Firmware
         working-directory: firmware
-        run: bin/compile.sh config/boards/MEGA144H7/meta-info-MEGA144H7.env bundle --output-sync=recurse
+        run: bash bin/compile.sh config/boards/MEGA144H7/meta-info-MEGA144H7.env bundle --output-sync=recurse
